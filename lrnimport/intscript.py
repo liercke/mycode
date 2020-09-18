@@ -2,7 +2,7 @@
 
 from subprocess import call
 import netifaces
-
+import crayons
 runfirstcode = input("Would you like to run the first code? (y or n): ")
 
 if runfirstcode == "y":
@@ -29,8 +29,6 @@ else:
     print("You did not want to run wireshark!")
 
 
-command = ""
-
 print("What details do you want to see?\n")
 print("1 - Verify routing table")
 print("2 - Interface Details")
@@ -38,5 +36,7 @@ print("2 - Interface Details")
 command = input("Please select an option above:\n")
 if command == "1":
     call(["netstat", "-rn"])
+elif command == "2":
+    call(["ifconfig"])
 else:
-    call(["ifconfig"])            
+    print(crayons.red("You did not select a valid option!", bold=True))
